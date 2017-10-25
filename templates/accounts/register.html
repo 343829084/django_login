@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="zh-CN"><head>
+<title>Regist</title>
+</head>
+<body>
+<h1>注册页面</h1>
+
+<form  method="post" accept-charset="utf-8"enctype="multipart/form-data" >
+    {{RegisterForm.as_p}}
+    <input type="submit" class="submit" value="立即注册">
+</form>
+</body>
+</html>
