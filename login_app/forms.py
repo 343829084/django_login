@@ -44,9 +44,9 @@ class LoginForm(forms.Form):
         if self.user_cache is None:
             print "user_cache is none"
             raise forms.ValidationError(u"您输入的用户名或密码不正确!")
-        elif not self.user_cache.is_active or not self.user_cache.is_staff:
+        elif not self.user_cache.is_active:
             print "not active"
-            raise forms.ValidationError(u"您输入的用户名不正确!")
+            raise forms.ValidationError(u"您输入的用户不可用!")
         else:
             #user = User.objects.filter(username__exact = username, password__exact = password)
             user = User.objects.get(username__exact = username)

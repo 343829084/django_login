@@ -9,3 +9,7 @@
 7>{% csrf_token %}: 跨域请求，我们需要在表单标签的内部加上这个模板标签，而且要在views.py中配合render而不是render_to_response来实现
 
 
+8>django有一个内部的User类，我们可以通过继承User类进行扩充新字段，新字段保存在新的表中，查询用户名及密码等还是在auth.User表中
+
+
+
